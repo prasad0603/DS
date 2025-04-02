@@ -1,0 +1,15 @@
+npx create-react-app registrationform  
+cd registrationform
+npm start
+git init
+npm install gh pages
+git add .
+
+"homepage": "https://prasad0603.github.io/Devops1"
+"predeploy": "npm run build"
+"deploy": "gh-pages -d build"
+npm run deploy
+
+npm install gh pages
+npx gh-pages -d build
+
