@@ -1,76 +1,29 @@
-EXPERIMENT1
+//EXPERIMENT1
 npx create-react-app registrationform  
 cd registrationform
 npm start
-import React, { useState } from 'react';  
+//code
+// Add basic validation
+function App() {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert('Form submitted!');
+  };
 
-const App = () => {  
-    const [formData, setFormData] = useState({  
-        name: '',  
-        email: '',  
-        password: ''  
-    });  
-
-    const [isSubmitted, setIsSubmitted] = useState(false);  
-
-    const handleChange = (e) => {  
-        const { name, value } = e.target;  
-        setFormData({ ...formData, [name]: value });  
-    };  
-
-    const handleSubmit = (e) => {  
-        e.preventDefault();  
-        // Here you can add additional logic (e.g., API call)  
-        setIsSubmitted(true);  
-    };  
-
-    return (  
-        <div style={{ textAlign: 'center', marginTop: '50px' }}>  
-            {isSubmitted ? (  
-                <h2>Registration Successful</h2>  
-            ) : (  
-                <form onSubmit={handleSubmit}>  
-                    <h2>Registration Form</h2>  
-                    <input  
-                        type="text"  
-                        name="name"  
-                        placeholder="Name"  
-                        value={formData.name}  
-                        onChange={handleChange}  
-                        required  
-                    />  
-                    <br /><br />  
-                    <input  
-                        type="email"  
-                        name="email"  
-                        placeholder="Email"  
-                        value={formData.email}  
-                        onChange={handleChange}  
-                        required  
-                    />  
-                    <br /><br />  
-                    <input  
-                        type="password"  
-                        name="password"  
-                        placeholder="Password"  
-                        value={formData.password}  
-                        onChange={handleChange}  
-                        required  
-                    />  
-                    <br /><br />  
-                    <button type="submit">Submit</button>  
-                </form>  
-            )}  
-        </div>  
-    );  
-};  
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
 
 export default App;  
-Modify app.js with this content
-EXPERIMENT2
-
-
-EXPERIMENT3
+//Modify app.js with this content
+//EXPERIMENT2
+//EXPERIMENT3
+//EXPERIMENT4(PUT INTO GITHUB PAGES AFTHER THE CODE IS ALREADY PUSH INTO YOUR REPO)
 git init
 npm install gh pages
 git add .
@@ -81,12 +34,24 @@ FIEST ADD THIS ONE LINE IN PACKAGE.JSON
 npm run deploy
 npm install gh pages
 npx gh-pages -d build
-
-
-EXPERIMENT5
-EXPERIMENT6
-EXPERIMENT7
-DOCKER CONTIANER
+///////////////////////////////////////////
+git init
+git add .
+git commit -am "commit"
+git remote add origin https://github.com/prasad0603/reg.git
+git branch -M main
+git push -u origin main
+git pull origin main --rebase//if the code is not push in main branch then do it command
+git push -u origin main
+git checkout -b feature-branch-name
+git add .
+git commit -m "Add login page UI"
+git push -u origin feature-branch-name
+//EXPERIMENT5
+//EXPERIMENT6
+//EXPERIMENT7
+//EXPERIMENT8
+ DOCKER CONTIANER
 Dockerfile .
 # Step 1: Build the React app
 FROM node:18-alpine AS builder
