@@ -153,6 +153,38 @@ Dockerfile
 .git
 .gitignore
  COMMAND PROMPT
+//////////////////////////////////////////////////////////////////////////EXPERIMENT10&11////////////////////////////////////////////////////////////////////////////////////
+docker -v
+minikube status
+kubectl version
+step1:after creating the docker container and push it into the dockerhub
+step2:add the deployement.yml file
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: containermain-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: containermain
+  template:
+    metadata:
+      labels:
+        app: containermain
+    spec:
+      containers:
+      - name: containermain
+        image: prasadsadanala/containermain
+        ports:
+        - containerPort: 80
+
+step3:commands
+minikube start
+minikube delete//is error in minikube start and repeat the process again same from the minikube start
+kubectl get nodes
+kubectl apply -f deployment.yml --validate=false
+minikube dashboard
 
 
 
