@@ -111,8 +111,14 @@ npx gh-pages -d build
 ////////////////////////////////////////////////////////////////////////EXPERIMENT7//////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////EXPERIMENT8//////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////EXPERIMENT9///////////////////////////////////////////////////////////////////////////////////////
- DOCKER CONTIANER
-Dockerfile .
+step1:created the react application first for reg form
+step2:created a dockerfile and .dockerignore in the regform
+step3:commands
+docker build -t <user folder name> .
+docker run -d -p 8080:80 <user folder name>
+docker tag <user folder name created> <your-dockerhub-username>/<user folder name created>
+docker push <your-dockerhub-username>/<user folder name created>
+//Dockerfile
 # Step 1: Build the React app
 FROM node:18-alpine AS builder
 
@@ -139,8 +145,7 @@ EXPOSE 80
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
 
-.dockerignore file create
-
+//.dockerignore file create
 node_modules
 build
 .dockerignore
