@@ -199,6 +199,136 @@ kubectl get nodes
 kubectl apply -f deployment.yml --validate=false
 minikube dashboard
 ///////////////////////////////////////////////////////////////////////////////EXPERIMENT12//////////////////////////////////////////////////////////////////////////////////
+step:create a folder demo
+step:create a folder mkdir selenium through vscode
+step:cd selenium
+step:npm init -y
+step:npm install selenium-webdriver
+step:npm install chromedriver
+step:create 2 files index.html and test.js
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background-color: white;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 12px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Registration Form</h2>
+    <form id="regForm" action="#" method="post">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required />
+
+      <button type="submit" id="submitBtn">Register</button>
+    </form>
+  </div>
+</body>
+</html>
+////test.js
+const { Builder, By } = require('selenium-webdriver');
+const path = require('path');
+
+async function runTest() {
+  const driver = await new Builder().forBrowser('chrome').build();
+
+  try {
+    // Get the local file path
+    const filePath = 'file://' + path.resolve(__dirname, 'index.html');
+
+    // Open the form
+    await driver.get(filePath);
+    await driver.sleep(2000); // Wait 2 seconds
+
+    // Fill in username
+    await driver.findElement(By.id('username')).sendKeys('TestUser123');
+    await driver.sleep(2000); // Wait 2 seconds
+
+    // Fill in email
+    await driver.findElement(By.id('email')).sendKeys('test@example.com');
+    await driver.sleep(2000); // Wait 2 seconds
+
+    // Fill in password
+    await driver.findElement(By.id('password')).sendKeys('SecurePass456');
+    await driver.sleep(2000); // Wait 2 seconds
+
+    // Click the Register button
+    await driver.findElement(By.id('submitBtn')).click();
+    await driver.sleep(3000); // Wait 3 seconds to see the result
+
+    console.log("✅ Form filled and submitted slowly!");
+
+  } catch (error) {
+    console.error("❌ Test failed:", error);
+  } finally {
+    await driver.quit();
+  }
+}
+
+runTest();
+step:node test.js    
 ///////////////////////////////////////////////////////////////////////////////EXPERIMENT13//////////////////////////////////////////////////////////////////////////////////
 
 
